@@ -27,3 +27,7 @@ output "iam_user2_id" {
 output "iam_group_name" {
   value = "${module.iam_group.group_name}"
 }
+
+output "iam_dynamic_group_name" {
+  value = "${module.iam_dynamic_group.dynamic_group_name}"
+}

@@ -32,7 +32,6 @@ resource "oci_identity_user_group_membership" "this" {
   # count    = "${length(var.user_ids)}"
   # use workaround here
   count = "${var.user_count}"
-
   user_id  = "${var.user_ids[count.index]}"
   group_id = "${var.group_create ? element(concat(oci_identity_group.this.*.id, list("")), 0) : lookup(local.group_ids[0], "id")}"
 }
@@ -41,7 +40,7 @@ resource "oci_identity_user_group_membership" "this" {
 # Group Policy
 ########################
 resource "oci_identity_policy" "this" {
-  count          = "${var.policy_create ? 1 : 0}"
+  count          = "${length(var.policy_name) > 0 ? 1 : 0}"
   depends_on     = ["oci_identity_group.this"]
   name           = "${var.policy_name}"
   description    = "${var.policy_description}"

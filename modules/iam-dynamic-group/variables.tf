@@ -11,6 +11,7 @@ variable "dynamic_group_name" {
 // The description is only used if dynamic_group_create = true.
 variable "dynamic_group_description" {
   description = "The description you assign to the Group. Does not have to be unique, and it's changeable. "
+  default     = ""
 }
 
 variable "dynamic_group_create" {
@@ -28,7 +29,6 @@ variable "policy_name" {
   default     = ""
 }
 
-// The description is only used if policy_create = true.
 variable "policy_description" {
   description = "The description you assign to the policy. Does not have to be unique, and it's changeable. "
   default     = ""
@@ -42,9 +42,4 @@ variable "policy_statements" {
 variable "policy_compartment_id" {
   description = "The compartment id assign to policy."
   default     = ""
-}
-
-variable "policy_create" {
-  description = "Create the policy or not"
-  default     = false
 }

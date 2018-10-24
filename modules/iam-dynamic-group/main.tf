@@ -29,7 +29,7 @@ locals {
 # Dynamic Group Policy
 ########################
 resource "oci_identity_policy" "this" {
-  count          = "${var.policy_create ? 1 : 0}"
+  count          = "${length(var.policy_name) > 0 ? 1 : 0}"
   depends_on     = ["oci_identity_dynamic_group.this"]
   name           = "${var.policy_name}"
   description    = "${var.policy_description}"
