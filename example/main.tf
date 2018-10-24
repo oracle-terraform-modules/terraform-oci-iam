@@ -57,7 +57,7 @@ module "iam_group" {
   user_count            = 2
   user_ids              = ["${module.iam_user1.user_id}", "${module.iam_user2.user_id}"]
   policy_compartment_id = "${module.iam_compartment.compartment_id}"
-  //policy_name           = "tf-example-policy"
+  policy_name           = "tf-example-policy"
   policy_description    = "policy created by terraform"
   policy_statements     = ["Allow group tf_example_group to read instances in compartment tf_example_compartment", "Allow group tf_example_group to inspect instances in compartment tf_example_compartment"]
 }
@@ -69,7 +69,7 @@ module "iam_dynamic_group" {
   dynamic_group_description = "dynamic group created by terraform"
   dynamic_group_rule        = "instance.compartment.id = '${module.iam_compartment.compartment_id}'"
   policy_compartment_id     = "${module.iam_compartment.compartment_id}"
-  //policy_name               = "tf-example-dynamic-policy"
+  policy_name               = "tf-example-dynamic-policy"
   policy_description        = "dynamic policy created by terraform"
   policy_statements         = ["Allow dynamic-group tf_example_dynamic_group to read instances in compartment tf_example_compartment"]
 }
