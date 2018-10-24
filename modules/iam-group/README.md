@@ -23,15 +23,15 @@ Argument | Description
 --- | ---
 tenancy_ocid | (Required) Unique identifier (OCID) of the tenancy.
 group_name | (Required) The name you assign to the IAM group when created. The name must be unique across all compartments in the tenancy.
-group_description | (Required) Description of the IAM group. The description is editable.
+group_description | (Required if group_create is true.) Description of the IAM group. The description is editable.
 group_create | (Optional) Specifies whether the module should create the group. If true, the user must have permission to create a group. If false, group data is returned for all existing groups. If no groups are found, an empty string is returned for the group ID. Default value is true.
 user_count | (Optional) Number of user to be added to a group.
 user_ids | (Optional) List of user' ocids.
-policy_name | (Optional)  The name you assign to the IAM policy. If policy_create is true, this filed should be required.
-policy_description | (Optional) Description of the IAM policy. The description is editable. If policy_create is true, this filed should be required.
-policy_statements |(Optional)  The policy definition expressed as one or more policy statements. If policy_create is true, this filed should be required.
-policy_create | (Optional) Specifies whether the modules should create the IAM policy. Default value is true.
+policy_create | (Optional) Specifies whether the modules should create the IAM policy. Default value is false.
+policy_name | (Required if policy_create is true.)  The name you assign to the IAM policy. 
+policy_description | (Required if policy_create is true.) Description of the IAM policy. The description is editable. 
+policy_statements | (Required if policy_create is true.)  The policy definition expressed as one or more policy statements. 
 
-You can find the other parameters in [variables.tf](variables.tf).
+You can find the other parameters in [variables.tf](https://github.com/oracle-terraform-modules/terraform-oci-iam/blob/master/modules/iam-group/variables.tf).
 
-Check out the [example](../../example) for fully-working sample code.
+Check out the [example](https://github.com/oracle-terraform-modules/terraform-oci-iam/tree/master/example) for fully-working sample code.

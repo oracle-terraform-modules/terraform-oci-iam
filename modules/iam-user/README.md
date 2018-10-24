@@ -17,9 +17,9 @@ Argument | Description
 --- | ---
 tenancy_ocid | (Required) Unique identifier (OCID) of the tenancy.
 user_name | The name you assign to the user during creation. The name must be unique across all compartments in the tenancy.
-user_description | (Required) Description of the user. The description is editable.
+user_description | (Required if user_create is true.) Description of the user. The description is editable.
 user_create | (Optional) Specifies whether the module should create a user. If true, the user must have permissions to create a user. If false, user data will be returned about existing users. If no users are found, an empty string is returned for the user ID. Default value is true.
 
-You can find the other parameters in [variables.tf](variables.tf).
+You can find the other parameters in [variables.tf](https://github.com/oracle-terraform-modules/terraform-oci-iam/blob/master/modules/iam-user/variables.tf).
 
-Check out the [example](../../example) for fully-working sample code.
+Check out the [example](https://github.com/oracle-terraform-modules/terraform-oci-iam/tree/master/example) for fully-working sample code.

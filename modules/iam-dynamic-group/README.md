@@ -25,11 +25,11 @@ dynamic_group_name | (Required) Name given to the dynamic group during creation.
 dynamic_group_description | (Required if dynamic_group_create is true.) Description of the dynamic group. The description is editable.
 dynamic_group_create | (Optional) Specifies whether the module should create a dynamic group. If true, the user must have permission to create a dymaic group. If false, data is returned for any existing dynamic groups, and an empty string is returned for the dynamic group ID. Default value is true.
 dynamic_group_rule | (Required if dynamic_group_create is true.) Define a matching rule or a set of matching rules to define the group members.
-policy_name | (Optional)  The name you assign to the IAM policy. If policy_create is true, this filed should be required.
-policy_description | (Optional) Description of the IAM policy. The description is editable. If policy_create is true, this filed should be required.
-policy_statements |(Optional)  The policy definition expressed as one or more policy statements. If policy_create is true, this filed should be required.
-policy_create | (Optional) Specifies whether the modules should create the IAM policy. Default value is true.
+policy_create | (Optional) Specifies whether the modules should create the IAM policy. Default value is false.
+policy_name | (Required if policy_create is true.)  The name you assign to the IAM policy. 
+policy_description | (Required if policy_create is true.) Description of the IAM policy. The description is editable. 
+policy_statements | (Required if policy_create is true.)  The policy definition expressed as one or more policy statements. 
 
-You can find the other parameters in [variables.tf](variables.tf).
+You can find the other parameters in [variables.tf](https://github.com/oracle-terraform-modules/terraform-oci-iam/blob/master/modules/iam-dynamic_group/variables.tf).
 
-Check out the [example](../../example) for fully-working sample code.
+Check out the [example](https://github.com/oracle-terraform-modules/terraform-oci-iam/tree/master/example) for fully-working sample code.

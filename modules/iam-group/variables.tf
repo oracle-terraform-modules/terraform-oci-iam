@@ -21,7 +21,7 @@ variable "group_create" {
 
 variable "user_count" {
   description = "Number of user(s) to be added in a group. "
-  default     = ""
+  default     = 0
 }
 
 variable "user_ids" {
@@ -52,5 +52,5 @@ variable "policy_compartment_id" {
 
 variable "policy_create" {
   description = "Create the policy or not"
-  default     = true
+  default     = false
 }

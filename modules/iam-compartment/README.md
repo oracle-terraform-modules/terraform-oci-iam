@@ -21,6 +21,6 @@ compartment_name | (Required) The name you assign to the compartment. The name m
 compartment_description | (Required if compartment_create is true.) Description of the compartment. You can edit the description.
 compartment_create | (Optional)  Specifies whether the module should create a compartment. If true, the compartment will be managed by the module. In this case, the user must have permission to create the compartment. If false, compartment data will be returned about any existing compartments. If no compartment is found, an empty string is returned for the compartment ID. Default value is true.
 
-You can find the other parameters in [variables.tf](variables.tf).
+You can find the other parameters in [variables.tf](https://github.com/oracle-terraform-modules/terraform-oci-iam/blob/master/modules/iam-compartment/variables.tf).
 
-Check out the [example](../../example) for fully-working sample code.
+Check out the [example](https://github.com/oracle-terraform-modules/terraform-oci-iam/tree/master/example) for fully-working sample code.
