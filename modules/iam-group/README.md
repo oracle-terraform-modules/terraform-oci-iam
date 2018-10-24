@@ -27,7 +27,6 @@ group_description | (Required if group_create is true.) Description of the IAM g
 group_create | (Optional) Specifies whether the module should create the group. If true, the user must have permission to create a group. If false, group data is returned for all existing groups. If no groups are found, an empty string is returned for the group ID. Default value is true.
 user_count | (Optional) Number of user to be added to a group.
 user_ids | (Optional) List of user' ocids.
-policy_create | (Optional) Specifies whether the modules should create the IAM policy. Default value is false.
 policy_name | (Required if policy_name is not empty)  The name you assign to the IAM policy. 
 policy_description | (Required if policy_name is not empty) Description of the IAM policy. The description is editable. 
 policy_statements | (Required if policy_name is not empty)  The policy definition expressed as one or more policy statements. 
