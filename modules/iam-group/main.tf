@@ -31,7 +31,7 @@ resource "oci_identity_user_group_membership" "this" {
   # https://github.com/hashicorp/terraform/issues/12570
   # count    = "${length(var.user_ids)}"
   # use workaround here
-  count = "${var.user_count}"
+  count = "${var.group_create || length(lookup(local.group_ids[0], "id")) > 0 ? var.user_count : 0}"
   user_id  = "${var.user_ids[count.index]}"
   group_id = "${var.group_create ? element(concat(oci_identity_group.this.*.id, list("")), 0) : lookup(local.group_ids[0], "id")}"
 }
