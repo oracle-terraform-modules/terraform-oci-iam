@@ -25,7 +25,7 @@ dynamic_group_name | (Required) Name given to the dynamic group during creation.
 dynamic_group_description | (Required if dynamic_group_create is true.) Description of the dynamic group. The description is editable.
 dynamic_group_create | (Optional) Specifies whether the module should create a dynamic group. If true, the user must have permission to create a dynamic group. If false, data is returned for any existing dynamic groups, and an empty string is returned for the dynamic group ID. Default value is true.
 dynamic_group_rule | (Required if dynamic_group_create is true.) Define a matching rule or a set of matching rules to define the group members.
-policy_name | (Required if policy_name is not empty)  The name you assign to the IAM policy. 
+policy_name | (Optional)  The name you assign to the IAM policy. 
 policy_description | (Required if policy_name is not empty) Description of the IAM policy. The description is editable. 
 policy_statements | (Required if policy_name is not empty)  The policy definition expressed as one or more policy statements. 
 
