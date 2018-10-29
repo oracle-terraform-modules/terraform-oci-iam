@@ -29,6 +29,6 @@ policy_name | (Optional)  The name you assign to the IAM policy.
 policy_description | (Required if policy_name is not empty) Description of the IAM policy. The description is editable. 
 policy_statements | (Required if policy_name is not empty)  The policy definition expressed as one or more policy statements. 
 
-You can find the other parameters in [variables.tf](https://github.com/oracle-terraform-modules/terraform-oci-iam/blob/master/modules/iam-dynamic_group/variables.tf).
+You can find the other parameters in [variables.tf](https://github.com/oracle-terraform-modules/terraform-oci-iam/blob/master/modules/iam-dynamic-group/variables.tf).
 
 Check out the [example](https://github.com/oracle-terraform-modules/terraform-oci-iam/tree/master/example) for fully-working sample code.
