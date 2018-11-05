@@ -29,6 +29,7 @@ provider "oci" {
 
 module "iam_compartment" {
   source                  = "../modules/iam-compartment"
+  #source                 = "oracle-terraform-modules/iam/oci/modules/iam-compartment"
   tenancy_ocid            = "${var.tenancy_ocid}"
   compartment_name        = "tf_example_compartment"
   compartment_description = "compartment created by terraform"
@@ -37,6 +38,7 @@ module "iam_compartment" {
 
 module "iam_user1" {
   source           = "../modules/iam-user"
+  #source          = "oracle-terraform-modules/iam/oci/modules/iam-user"
   tenancy_ocid     = "${var.tenancy_ocid}"
   user_name        = "tf_example_user1@oracle.com"
   user_description = "user1 created by terraform"
@@ -44,6 +46,7 @@ module "iam_user1" {
 
 module "iam_user2" {
   source           = "../modules/iam-user"
+  #source          = "oracle-terraform-modules/iam/oci/modules/iam-user"
   tenancy_ocid     = "${var.tenancy_ocid}"
   user_name        = "tf_example_user2@oracle.com"
   user_description = "user2 created by terraform"
@@ -51,6 +54,7 @@ module "iam_user2" {
 
 module "iam_group" {
   source                = "../modules/iam-group"
+  #source               = "oracle-terraform-modules/iam/oci/modules/iam-group"
   tenancy_ocid          = "${var.tenancy_ocid}"
   group_name            = "tf_example_group"
   group_description     = "group created by terraform"
@@ -64,6 +68,7 @@ module "iam_group" {
 
 module "iam_dynamic_group" {
   source                    = "../modules/iam-dynamic-group"
+  #source                   = "oracle-terraform-modules/iam/oci/modules/iam-dynamic-group"
   tenancy_ocid              = "${var.tenancy_ocid}"
   dynamic_group_name        = "tf_example_dynamic_group"
   dynamic_group_description = "dynamic group created by terraform"
