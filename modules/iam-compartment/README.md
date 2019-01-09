@@ -4,7 +4,7 @@ This [Terraform module](https://www.terraform.io/docs/modules/index.html) allows
 
 ```hcl
 module "iam_compartment" {
-  source                  = "oracle-terraform-modules/iam/oci/modules/iam-compartment"
+  source                  = "oracle-terraform-modules/iam/oci//modules/iam-compartment"
   tenancy_ocid            = "${var.tenancy_ocid}"
   compartment_name        = "tf_example_compartment"
   compartment_description = "compartment created by terraform"

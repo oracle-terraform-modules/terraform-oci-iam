@@ -4,7 +4,7 @@ This [Terraform module](https://www.terraform.io/docs/modules/index.html) allows
 
 ```hcl
 module "iam_user1" {
-  source           = "oracle-terraform-modules/iam/oci/modules/iam-user"
+  source           = "oracle-terraform-modules/iam/oci//modules/iam-user"
   tenancy_ocid     = "${var.tenancy_ocid}"
   user_name        = "tf_example_user1@oracle.com"
   user_description = "user1 created by terraform"
