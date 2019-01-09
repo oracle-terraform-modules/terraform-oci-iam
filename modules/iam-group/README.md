@@ -4,7 +4,7 @@ This [Terraform module](https://www.terraform.io/docs/modules/index.html) define
 
 ```hcl
 module "iam_group" {
-  source                = "oracle-terraform-modules/iam/oci/modules/iam-group"
+  source                = "oracle-terraform-modules/iam/oci//modules/iam-group"
   tenancy_ocid          = "${var.tenancy_ocid}"
   group_name            = "tf_example_group"
   group_description     = "group created by terraform"

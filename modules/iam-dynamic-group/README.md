@@ -4,7 +4,7 @@ This [Terraform module](https://www.terraform.io/docs/modules/index.html) define
 
 ```hcl
 module "iam_dynamic_group" {
-  source                    = "oracle-terraform-modules/iam/oci/modules/iam-dynamic-group"
+  source                    = "oracle-terraform-modules/iam/oci//modules/iam-dynamic-group"
   tenancy_ocid              = "${var.tenancy_ocid}"
   dynamic_group_name        = "tf_example_dynamic_group"
   dynamic_group_description = "dynamic group created by terraform"
