@@ -8,10 +8,8 @@ variable "group_name" {
   description = "The name you assign to the group during creation. The name must be unique across all compartments in the tenancy. "
 }
 
-// The description is only used if group_create = true.
 variable "group_description" {
   description = "The description you assign to the Group. Does not have to be unique, and it's changeable. "
-  default     = ""
 }
 
 variable "group_create" {
