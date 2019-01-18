@@ -11,7 +11,7 @@ variable "group_name" {
 // The description is only used if group_create = true.
 variable "group_description" {
   description = "The description you assign to the Group. Does not have to be unique, and it's changeable. "
-  default     = " "
+  default     = ""
 }
 
 variable "group_create" {

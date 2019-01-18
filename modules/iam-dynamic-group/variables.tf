@@ -10,7 +10,7 @@ variable "dynamic_group_name" {
 
 variable "dynamic_group_description" {
   description = "The description you assign to the Group. Does not have to be unique, and it's changeable. "
-  default     = " "
+  default     = ""
 }
 
 variable "dynamic_group_create" {

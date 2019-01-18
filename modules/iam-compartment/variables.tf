@@ -11,7 +11,7 @@ variable "compartment_name" {
 // The description is only used if compartment_create = true.
 variable "compartment_description" {
   description = "The description you assign to the compartment. Does not have to be unique, and it's changeable. "
-  default     = " "
+  default     = ""
 }
 
 variable "compartment_create" {

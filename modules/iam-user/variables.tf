@@ -11,7 +11,7 @@ variable "user_name" {
 // The description is only used if user_create = true.
 variable "user_description" {
   description = "The description you assign to the user. Does not have to be unique, and it's changeable. "
-  default     = " "
+  default     = ""
 }
 
 variable "user_create" {
