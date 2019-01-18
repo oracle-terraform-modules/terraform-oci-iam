@@ -4,9 +4,10 @@
 # Group
 ########################
 resource "oci_identity_group" "this" {
-  count       = "${var.group_create ? 1 : 0}"
-  name        = "${var.group_name}"
-  description = "${var.group_description}"
+  count          = "${var.group_create ? 1 : 0}"
+  compartment_id = "${var.tenancy_ocid}"
+  name           = "${var.group_name}"
+  description    = "${var.group_description}"
 }
 
 data "oci_identity_groups" "this" {
@@ -31,7 +32,8 @@ resource "oci_identity_user_group_membership" "this" {
   # https://github.com/hashicorp/terraform/issues/12570
   # count    = "${length(var.user_ids)}"
   # use workaround here
-  count    = "${var.user_count}"
+  count = "${var.user_count}"
+
   user_id  = "${var.user_ids[count.index]}"
   group_id = "${var.group_create ? element(concat(oci_identity_group.this.*.id, list("")), 0) : lookup(local.group_ids[0], "id")}"
 }

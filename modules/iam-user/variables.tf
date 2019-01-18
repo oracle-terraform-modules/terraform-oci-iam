@@ -15,6 +15,6 @@ variable "user_description" {
 }
 
 variable "user_create" {
-  description = "Create the group or not. If true, the user must have permissions to create the user; If false, user data will be returned about the user if it exists, if not found, then an empty string will be returned for the user ID."
+  description = "Create the user or not. If true, the user must have permissions to create the user; If false, user data will be returned about the user if it exists, if not found, then an empty string will be returned for the user ID."
   default     = true
 }

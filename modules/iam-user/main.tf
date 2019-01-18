@@ -4,9 +4,10 @@
 # User
 ########################
 resource "oci_identity_user" "this" {
-  count       = "${var.user_create ? 1 : 0}"
-  name        = "${var.user_name}"
-  description = "${var.user_description}"
+  count          = "${var.user_create ? 1 : 0}"
+  compartment_id = "${var.tenancy_ocid}"
+  name           = "${var.user_name}"
+  description    = "${var.user_description}"
 }
 
 data "oci_identity_users" "this" {
