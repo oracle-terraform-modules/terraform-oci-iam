@@ -34,5 +34,5 @@ resource "oci_identity_policy" "this" {
   name           = "${var.policy_name}"
   description    = "${var.policy_description}"
   compartment_id = "${var.policy_compartment_id}"
-  statements     = ["${var.policy_statements}"]
+  statements     = "${var.policy_statements}"
 }
