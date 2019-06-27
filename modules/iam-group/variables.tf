@@ -19,14 +19,9 @@ variable "group_create" {
   default     = true
 }
 
-variable "user_count" {
-  description = "Number of user(s) to be added in a group. "
-  default     = 0
-}
-
 variable "user_ids" {
-  description = "List of user' ocids. "
-  default     = []
+  description = "List of user ocids. "
+  default     = ""
 }
 
 variable "policy_name" {
