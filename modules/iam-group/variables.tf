@@ -1,4 +1,4 @@
-// Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
 
 variable "tenancy_ocid" {
   description = "The OCID of the tenancy. "

@@ -1,4 +1,4 @@
-// Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
 
 output "dynamic_group_id" {
   value = var.dynamic_group_create ? element(concat(oci_identity_dynamic_group.this.*.id, list("")), 0) : lookup(local.dynamic_group_ids[0], "id")

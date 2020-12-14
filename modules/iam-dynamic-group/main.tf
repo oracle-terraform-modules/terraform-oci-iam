@@ -1,4 +1,4 @@
-// Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
 
 ########################
 # Dynamic Group
@@ -9,10 +9,6 @@ resource "oci_identity_dynamic_group" "this" {
   name           = var.dynamic_group_name
   description    = var.dynamic_group_description
   matching_rule  = var.dynamic_group_rule
-  freeform_tags = {
-    "Terraformed" = "Yes"
-    "TF_Module" = "iam_iam-dynamic-group"
-  }
 }
 
 data "oci_identity_dynamic_groups" "this" {
@@ -39,8 +35,4 @@ resource "oci_identity_policy" "this" {
   description    = var.policy_description
   compartment_id = var.policy_compartment_id
   statements     = var.policy_statements
-  freeform_tags = {
-    "Terraformed" = "Yes"
-    "TF_Module" = "iam_iam-dynamic-group"
-  }
 }

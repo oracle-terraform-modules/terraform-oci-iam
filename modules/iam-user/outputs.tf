@@ -1,4 +1,4 @@
-// Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
 
 output "name_ocid" {
   value       = zipmap(oci_identity_user.this[*].name, oci_identity_user.this[*].id)

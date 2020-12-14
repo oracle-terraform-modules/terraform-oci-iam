@@ -4,6 +4,8 @@ This module contains a collection of submodules that simplify the managment of I
 
 ## Prerequisites
 
+This module requires Terraform 0.12 and the corresponding Oracle Cloud Infrastructure Terraform Provider (>= 3.27.0)
+
 See the [Oracle Cloud Infrastructure Terraform Provider docs](https://www.terraform.io/docs/providers/oci/index.html) for information about setting up and using the Oracle Cloud Infrastructure Terraform Provider.
 
 ## How to use this module
@@ -79,7 +81,7 @@ This project is open source. Oracle appreciates any contributions that are made 
 
 ## License
 
-Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
+Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
 
 Licensed under the Universal Permissive License 1.0 or Apache License 2.0.
 

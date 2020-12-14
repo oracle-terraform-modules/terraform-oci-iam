@@ -1,4 +1,4 @@
-// Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
 
 ########################
 # Compartment
@@ -10,10 +10,6 @@ resource "oci_identity_compartment" "this" {
   name           = var.compartment_name
   description    = var.compartment_description
   enable_delete  = var.enable_delete
-  freeform_tags = {
-    "Terraformed" = "Yes"
-    "TF_Module"   = "iam_iam-compartment"
-  }
 }
 
 data "oci_identity_compartments" "this" {

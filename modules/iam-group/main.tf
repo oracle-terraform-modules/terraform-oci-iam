@@ -1,4 +1,4 @@
-// Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
 
 ########################
 # Group
@@ -8,10 +8,6 @@ resource "oci_identity_group" "this" {
   compartment_id = var.tenancy_ocid
   name           = var.group_name
   description    = var.group_description
-  freeform_tags = {
-    "Terraformed" = "Yes"
-    "TF_Module" = "iam_iam-group"
-  }
 }
 
 data "oci_identity_groups" "this" {
@@ -47,8 +43,4 @@ resource "oci_identity_policy" "this" {
   description    = var.policy_description
   compartment_id = var.policy_compartment_id
   statements     = var.policy_statements
-  freeform_tags = {
-    "Terraformed" = "Yes"
-    "TF_Module" = "iam_iam-group"
-  }
 }
