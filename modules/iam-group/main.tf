@@ -21,7 +21,7 @@ data "oci_identity_groups" "this" {
 }
 
 locals {
-  group_ids = "${concat(flatten(data.oci_identity_groups.this.*.groups), list(map("id", "")))}"
+  group_ids = concat(flatten(data.oci_identity_groups.this.*.groups), list(map("id", "")))
 }
 
 ########################
@@ -37,8 +37,8 @@ resource "oci_identity_user_group_membership" "this" {
 # Group Policy
 ########################
 resource "oci_identity_policy" "this" {
-  count          = "${length(var.policy_name) > 0 ? 1 : 0}"
-  depends_on     = ["oci_identity_group.this"]
+  count          = length(var.policy_name) > 0 ? 1 : 0
+  depends_on     = [oci_identity_group.this]
   name           = var.policy_name
   description    = var.policy_description
   compartment_id = var.policy_compartment_id

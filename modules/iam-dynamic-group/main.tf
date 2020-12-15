@@ -22,7 +22,7 @@ data "oci_identity_dynamic_groups" "this" {
 }
 
 locals {
-  dynamic_group_ids = "${concat(flatten(data.oci_identity_dynamic_groups.this.*.dynamic_groups), list(map("id", "")))}"
+  dynamic_group_ids = concat(flatten(data.oci_identity_dynamic_groups.this.*.dynamic_groups), list(map("id", "")))
 }
 
 ########################
@@ -30,7 +30,7 @@ locals {
 ########################
 resource "oci_identity_policy" "this" {
   count          = length(var.policy_name) > 0 ? 1 : 0
-  depends_on     = ["oci_identity_dynamic_group.this"]
+  depends_on     = [oci_identity_dynamic_group.this]
   name           = var.policy_name
   description    = var.policy_description
   compartment_id = var.policy_compartment_id

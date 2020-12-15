@@ -8,6 +8,10 @@ output "dynamic_group_name" {
   value = var.dynamic_group_name
 }
 
+output "name_ocid" {
+  value       = zipmap(oci_identity_dynamic_group.this[*].name, oci_identity_dynamic_group.this[*].id)
+  description = "group name and associated OCID"
+}
 output "dynamic_group_policy_name" {
   value = var.policy_name
 }

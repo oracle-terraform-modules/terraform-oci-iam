@@ -6,17 +6,18 @@ variable "tenancy_ocid" {
 
 variable "compartment_name" {
   description = "The name you assign to the compartment during creation. The name must be unique across all compartments in the tenancy. "
+  default     = null
 }
 
 variable "compartment_id" {
   description = "The OCID of the parent compartment containing the compartment. Allow for sub-compartments creation"
-  default     = ""
+  default     = null
 }
 
 // The description is only used if compartment_create = true.
 variable "compartment_description" {
   description = "The description you assign to the compartment. Does not have to be unique, and it's changeable. "
-  default     = ""
+  default     = null
 }
 
 variable "compartment_create" {

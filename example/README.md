@@ -1,25 +1,74 @@
-### Create Compartment, User, Group and Dynamic Group
-This example shows how to reference an existing compartment as a resource (compartment_create = false), or if a compartment needs to be created, please set compartment_create = true.
-Also this example shows how to create two users, a group and add two users to it, and create a policy pertaining to a compartment and group, and some more directives to show dynamic groups and policy for it.
+# Create Compartment, Sub-compartment, Users, Group and Dynamic Group
 
-Note: The compartment resource internally resolves name collisions and returns a reference to the preexisting compartment. Compartments can not be deleted, so removing a compartment resource from your .tf file will only remove it from your statefile. User, group, and dynamic group created by this example can be deleted by using the Terraform destroy command.
+This example shows how to create a compartement and two sub-compartemnt.
 
-### Using this example
-* Create a "terraform.tfvars" file based on the provided template, "terraform.tfvars.template", and fill in the necessary info.
-* Initialize the directory:
+This example also shows how to create:
 
-```
+- several users with a single module block,
+- a group and add users to it,
+- a policy pertaining to a compartment and group,
+- some more directives to show dynamic groups and policy for it.
+
+Note: The compartment resource internally resolves name collisions and returns a reference to the preexisting compartment.
+All resources created by this example can be deleted by using the `terraform destroy` command.
+
+## Using this example
+
+- Create a "terraform.tfvars" file based on the provided template, "terraform.tfvars.template", and fill in the necessary info.
+- Initialize the directory:
+
+```bash
 $ terraform init
 ```
 
-* View what Terraform plans do before actually doing it:
+- Inspect what Terraform plans to do before actually doing it:
 
-```
+```bash
 $ terraform plan
 ```
 
-* Use Terraform to Provision resources on OCI:
+-  If proposed changes are what waas intended, apply the plan to Provision resources on OCI (if not abort the operation and review the configuration):
 
-```
+```bash
 $ terraform apply
+```
+
+Sample ouput:
+
+```bash
+Apply complete! Resources: 11 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+iam_compartment = {
+  "description" = "compartment created by terraform"
+  "name" = "tf_example_compartment"
+  "ocid" = "ocid1.compartment.oc1..aaaaaaaa"
+  "parent" = "ocid1.tenancy.oc1..aaaaaaaa"
+}
+iam_dynamic_group_name = tf_example_dynamic_group
+iam_group = [
+  {
+    "tf_example_group" = "ocid1.group.oc1..aaaaaaaa"
+  },
+]
+iam_subcompartment1 = {
+  "description" = "subcompartment created below tf_example_compartment by terraform"
+  "name" = "tf_example_subcompartment"
+  "ocid" = ""
+  "parent" = ""
+}
+iam_subcompartment2 = {
+  "description" = "subcompartment created below tf_example_compartment by terraform"
+  "name" = "tf_example_subcompartment2"
+  "ocid" = ""
+  "parent" = ""
+}
+iam_users = [
+  {
+    "tf_example_user1@example.com" = "ocid1.user.oc1..aaaaaaaa"
+    "tf_example_user2@example.com" = "ocid1.user.oc1..aaaaaaaa"
+    "tf_example_user3@example.com" = "ocid1.user.oc1..aaaaaaaa"
+  },
+]
 ```

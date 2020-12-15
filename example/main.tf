@@ -18,16 +18,16 @@ provider "oci" {
 }
 
 /*
- * This example shows how to reference an existing compartment as a resource (compartment_create = false),
- * or if a compartment needs to be created, please set compartment_create = true.
- * Also this example shows how to create two users, a group and add two users to it, and create a policy
- * pertaining to a compartment and group.
- * And some more directives to show dynamic groups and policy for it.
- *
- * Note: the compartment resource internally resolves name collisions and returns a reference to the preexisting
- * compartment. Compartments can not be deleted, so removing a compartment resource from your .tf file will only
- * remove it from your statefile. User, group and dynamic group created by this example can be deleted by using
- * terrafrom destroy.
+* This example shows how to create a compartement and two sub-compartemnt.
+*
+* This example also shows how to create:
+* - several users with a single module block,
+* - a group and add users to it,
+* - a policy pertaining to a compartment and group,
+* - some more directives to show dynamic groups and policy for it.
+*
+* Note: The compartment resource internally resolves name collisions and returns a reference to the preexisting compartment.
+* All resources created by this example can be deleted by using the Terraform destroy command.
  */
 
 module "iam_compartment" {
@@ -41,11 +41,21 @@ module "iam_compartment" {
   enable_delete           = true // give option to delete compartment on `terraform destroy`
 }
 
-module "iam_subcompartment" {
+module "iam_subcompartment1" {
   source                  = "../modules/iam-compartment"
-  tenancy_ocid            = var.compartment_ocid
+  tenancy_ocid            = var.tenancy_ocid
   compartment_id          = module.iam_compartment.compartment_id
   compartment_name        = "tf_example_subcompartment"
+  compartment_description = "subcompartment created below tf_example_compartment by terraform"
+  compartment_create      = true
+  enable_delete           = true // give option to delete compartment on `terraform destroy`
+}
+
+module "iam_subcompartment2" {
+  source                  = "../modules/iam-compartment"
+  tenancy_ocid            = var.tenancy_ocid
+  compartment_id          = module.iam_compartment.compartment_id
+  compartment_name        = "tf_example_subcompartment2"
   compartment_description = "subcompartment created below tf_example_compartment by terraform"
   compartment_create      = true
   enable_delete           = true // give option to delete compartment on `terraform destroy`
@@ -57,19 +67,19 @@ module "iam_users" {
   tenancy_ocid = var.tenancy_ocid
   users = [
     {
-      name        = "tf_example_user1@oracle.com"
+      name        = "tf_example_user1@example.com"
       description = "user1 created by terraform"
-      email       = "tf_example_user1@oracle.com"
+      email       = "tf_example_user1@example.com"
     },
     {
-      name        = "tf_example_user2@oracle.com"
+      name        = "tf_example_user2@example.com"
       description = "user2 created by terraform"
-      email       = "tf_example_user2@oracle.com"
+      email       = "tf_example_user2@example.com"
     },
     {
-      name        = "tf_example_user3@oracle.com"
+      name        = "tf_example_user3@example.com"
       description = "user3 created by terraform"
-      email       = "tf_example_user3@oracle.com"
+      email       = "tf_example_user3@example.com"
     },
   ]
 }
@@ -77,10 +87,10 @@ module "iam_users" {
 module "iam_group" {
   source = "../modules/iam-group"
   #source               = "oracle-terraform-modules/iam/oci//modules/iam-group"
-  tenancy_ocid      = var.tenancy_ocid
-  group_name        = "tf_example_group"
-  group_description = "group created by terraform"
-  user_ids              = ["${element(module.iam_users.user_id,0)}","${element(module.iam_users.user_id,1)}","${element(module.iam_users.user_id,2)}"]
+  tenancy_ocid          = var.tenancy_ocid
+  group_name            = "tf_example_group"
+  group_description     = "group created by terraform"
+  user_ids              = [element(module.iam_users.user_id, 0), element(module.iam_users.user_id, 1), element(module.iam_users.user_id, 2)]
   policy_compartment_id = module.iam_compartment.compartment_id
   policy_name           = "tf-example-policy"
   policy_description    = "policy created by terraform"

@@ -8,6 +8,15 @@ output "group_name" {
   value = var.group_name
 }
 
+output "name_ocid" {
+  value       = zipmap(oci_identity_group.this[*].name, oci_identity_group.this[*].id)
+  description = "group name and associated OCID"
+}
+
+output "group_description" {
+  value = var.group_description
+}
+
 output "group_policy_name" {
   value = var.policy_name
 }

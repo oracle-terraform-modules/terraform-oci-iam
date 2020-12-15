@@ -8,9 +8,9 @@ variable users {
   description = "The name and description you assign to the user during creation. The name must be unique across all compartments in the tenancy. "
   default = [
     {
-      name        = ""
-      description = ""
-      email       = ""
+      name        = null
+      description = null
+      email       = null
     }
   ]
 }
