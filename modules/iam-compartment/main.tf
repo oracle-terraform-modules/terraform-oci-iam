@@ -1,5 +1,14 @@
 // Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
 
+terraform {
+  required_version = ">= 0.12" // terraform version below 0.12 is not tested/supported with this module
+  required_providers {
+    oci = {
+      version = ">= 3.27" // force downloading oci-provider compatible with terraform v0.12
+    }
+  }
+}
+
 ########################
 # Compartment
 ########################

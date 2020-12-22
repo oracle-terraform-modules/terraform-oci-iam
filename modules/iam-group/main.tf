@@ -1,17 +1,26 @@
 // Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
 
+terraform {
+  required_version = ">= 0.12" // terraform version below 0.12 is not tested/supported with this module
+  required_providers {
+    oci = {
+      version = ">= 3.27" // force downloading oci-provider compatible with terraform v0.12
+    }
+  }
+}
+
 ########################
 # Group
 ########################
 resource "oci_identity_group" "this" {
-  count          = var.group_create ? 1 : 0
+  count          = var.group_create == true ? 1 : 0
   compartment_id = var.tenancy_ocid
   name           = var.group_name
   description    = var.group_description
 }
 
 data "oci_identity_groups" "this" {
-  count          = var.group_create ? 0 : 1
+  count          = var.group_create == false ? 1 : 0
   compartment_id = var.tenancy_ocid
 
   filter {
@@ -28,7 +37,7 @@ locals {
 # Add user to a group
 ########################
 resource "oci_identity_user_group_membership" "this" {
-  count    = length(var.user_ids)
+  count    = var.user_ids == null ? 0 : length(var.user_ids)
   user_id  = var.user_ids[count.index]
   group_id = var.group_create ? element(concat(oci_identity_group.this.*.id, list("")), 0) : lookup(local.group_ids[0], "id")
 }
@@ -37,7 +46,7 @@ resource "oci_identity_user_group_membership" "this" {
 # Group Policy
 ########################
 resource "oci_identity_policy" "this" {
-  count          = length(var.policy_name) > 0 ? 1 : 0
+  count          = var.policy_name != null ? 1 : 0
   depends_on     = [oci_identity_group.this]
   name           = var.policy_name
   description    = var.policy_description

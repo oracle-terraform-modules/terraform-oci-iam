@@ -18,19 +18,19 @@ All resources created by this example can be deleted by using the `terraform des
 - Initialize the directory:
 
 ```bash
-$ terraform init
+> terraform init
 ```
 
 - Inspect what Terraform plans to do before actually doing it:
 
 ```bash
-$ terraform plan
+> terraform plan
 ```
 
--  If proposed changes are what waas intended, apply the plan to Provision resources on OCI (if not abort the operation and review the configuration):
+- If proposed changes are what waas intended, apply the plan to Provision resources on OCI (if not abort the operation and review the configuration):
 
 ```bash
-$ terraform apply
+> terraform apply
 ```
 
 Sample ouput:

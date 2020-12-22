@@ -11,11 +11,39 @@ Given a version number MAJOR.MINOR.PATCH:
 - MINOR version when adding functionality in a backwards compatible manner,
 - PATCH version when making backwards compatible bug fixes.
 
+## [2.1.1] 2020-12-22
+
+### Added
+
+- variables: type constraints defined for all variables,
+- variables: default value is `null` if there is no other advisable value,
+- ouputs: user_description output for iam-user module,
+- terraform and OCI terraform provider version pinning block,
+- examples: add a README
+
+### Changed
+
+Documentation update:
+
+- update README files to use relative links for content coming from this repo
+- Update oci provider URL to registry.terraform.io
+- update the prerequisites and usage section for each submodule
+- add a column with default value for each variable
+
+Resources:
+
+- `count` tests with true/false for boolean variables,
+- `count` tests with null or variable length for arrays.
+
+### Fixed
+
+- iam-user: email can be empty if value is set to `null`
+
 ## [2.1.0] 2020-12-15
 
 ### Added
 
-- more current README.md for the example folder. Also add a sample apply output.
+- More current README.md for the example folder. Also add a sample apply output.
 
 #### Module - iam-compartment, iam-group, iam-dynamic-group
 
@@ -35,20 +63,20 @@ Given a version number MAJOR.MINOR.PATCH:
 
 ### Fixed
 
-- updates modules and examples to not use deprecated interpolation syntax anymore,
-- updates examples to show how to use the 2.x.x features of this module.
+- update modules and examples to not use deprecated interpolation syntax anymore,
+- update examples to show how to use the 2.x.x features of this module.
 
 ## [2.0.1] 2020-12-14
 
 ### Added
 
 - repo maintenance: starts this CHANGELOG.md
-- updates README.md prerequisites section with the required Terraform and Terraform Provider versions
+- update README.md prerequisites section with the required Terraform and Terraform Provider versions
 
 ### Changed
 
 - repo maintenance: updates Copyright to 2020
-- repo maintenance: .gitignore and .gitattributes adujsted files for cleaner repo
+- repo maintenance: .gitignore and .gitattributes adjusted files for cleaner repo
 
 ### Removed
 

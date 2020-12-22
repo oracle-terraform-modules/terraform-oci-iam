@@ -31,12 +31,12 @@ output "iam_subcompartment2" {
 }
 output "iam_users" {
   description = "list of username and associated ocid"
-  value       = module.iam_users[*].name_ocid
+  value       = module.iam_users.name_ocid
 }
 
 output "iam_group" {
   description = "group name and associated ocid"
-  value       = module.iam_group[*].name_ocid
+  value       = module.iam_group.name_ocid
 }
 
 output "iam_dynamic_group_name" {

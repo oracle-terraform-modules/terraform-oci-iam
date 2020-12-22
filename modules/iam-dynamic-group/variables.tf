@@ -1,44 +1,55 @@
 // Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
 
 variable "tenancy_ocid" {
-  description = "The OCID of the tenancy. "
+  type = string
+  description = "The OCID of the tenancy."
+  default = null
 }
 
 variable "dynamic_group_name" {
+  type = string
   description = "The name you assign to the group during creation. The name must be unique across all compartments in the tenancy. "
+  default = null
 }
 
 variable "dynamic_group_description" {
+  type = string
   description = "The description you assign to the Group. Does not have to be unique, and it's changeable. "
-  default     = ""
+  default     = null
 }
 
 variable "dynamic_group_create" {
-  description = "Create the dynamic group or not. If true, the user must have permissions to create the group; If false, group data will be returned about the group if it exists, if not found, then an empty string will be returned for the group ID."
+  type = bool
+  description = "(Deprecated) Create the dynamic group or not. If true, the user must have permissions to create the group; If false, group data will be returned about the group if it exists, if not found, then an empty string will be returned for the group ID."
   default     = true
 }
 
-variable "dynamic_group_rule" {
+variable "matching_rule" {
+  type = string
   description = "Define a matching rule or a set of matching rules to define the group members."
-  default     = ""
+  default     = null
 }
 
 variable "policy_name" {
+  type = string
   description = "The name you assign to the policy during creation.  "
-  default     = ""
+  default     = null
 }
 
 variable "policy_description" {
+  type = string
   description = "The description you assign to the policy. Does not have to be unique, and it's changeable. "
-  default     = ""
+  default     = null
 }
 
 variable "policy_statements" {
+  type = list(string)
   description = "Define policy consists of one or more policy statements. "
-  default     = []
+  default     = null
 }
 
 variable "policy_compartment_id" {
+  type = string
   description = "The compartment id assign to policy."
-  default     = ""
+  default     = null
 }
