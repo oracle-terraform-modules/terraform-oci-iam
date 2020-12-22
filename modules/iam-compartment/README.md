@@ -43,7 +43,7 @@ Check out the [examples](../../examples) for fully-working sample code.
 Note the following parameters:
 
 Argument | Description | Default
---- | ---
+--- | --- | ---
 tenancy_ocid | **[DEPRECATED]** (Required) Unique identifier (OCID) of the tenancy. | null
 compartment_id | (Required)(Updatable) The OCID of the parent compartment containing the compartment. | null
 compartment_name | (Required)(Updatable) The name you assign to the compartment. The name must be unique across all compartments in the parent compartment. | null

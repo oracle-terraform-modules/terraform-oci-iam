@@ -29,8 +29,8 @@ Check out the [examples](../../examples) folder for fully-working sample code.
 
 Note the following parameters:
 
-Argument | Description  | Default
---- | ---
+Argument | Description | Default
+--- | --- | ---
 tenancy_ocid | (Required) Unique identifier (OCID) of the tenancy. | null
 group_name | (Required) The name you assign to the IAM group when created. The name must be unique across all groups in the tenancy and cannot be changed. | null
 group_description | (Required if group_create is true.)(Updatable) Description of the IAM group. Does not have to be unique, and it's changeable. | null

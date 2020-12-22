@@ -23,7 +23,7 @@ Check out the [examples](../../examples) for fully-working sample code.
 Note the following parameters:
 
 Argument | Description | Default
---- | ---
+--- | --- | ---
 tenancy_ocid | (Required) Unique identifier (OCID) of the tenancy. | null
 dynamic_group_name | (Required) Name given to the dynamic group during creation. The name must be unique across all compartments in the tenancy and cannot be changed. | null
 dynamic_group_description | (Required if dynamic_group_create is true.)(Updatable) Description of the dynamic group. Does not have to be unique, and it's changeable. | null

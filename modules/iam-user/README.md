@@ -36,14 +36,14 @@ Check out the [examples](../../example/README.md) folder for fully-working sampl
 Note the following parameters for the module:
 
 Argument | Description | Default
---- | ---
+--- | --- | ---
 tenancy_ocid | (Required) Unique identifier (OCID) of the tenancy. Users may only be created at the root of the tenancy. | null
 users | (Required) A list of users to create | null
 
 Each User element is a map with up to three keys:
 
 Argument | Description | Default
---- | ---
+--- | --- | ---
 name | (Required) The name you assign to the user during creation. The name must be unique across all users in the tenancy and cannot be changed. | null
 description | (Required)(Updatable) Description you assign to the user during creation. Does not have to be unique, and it's changeable. | null
 email | (Required)(Updatable) The email address you assign to the user during creation. Has to be unique across the tenancy. Set it to null if you don't want to provide an email. | null
