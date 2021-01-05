@@ -9,8 +9,12 @@ This example also shows how to create:
 - a policy pertaining to a compartment and group,
 - some more directives to show dynamic groups and policy for it.
 
-Note: The compartment resource internally resolves name collisions and returns a reference to the preexisting compartment.
+Notes:
+
+- The compartment resource internally resolves name collisions and returns a reference to the preexisting compartment.
 All resources created by this example can be deleted by using the `terraform destroy` command.
+- When using the oci-iam modules, or more generally when manipulating iam resources, **be sure to configure your oci provider to use the tenancy's home region**, as IAM resources can only be managed from the home region.
+- To combine this template with non-iam resources provisioned in a region different from your *home region*, you will need to use [provider aliases](https://www.terraform.io/docs/configuration/providers.html#alias-multiple-provider-configurations).
 
 ## Using this example
 

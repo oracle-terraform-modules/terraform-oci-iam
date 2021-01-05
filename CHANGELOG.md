@@ -11,6 +11,12 @@ Given a version number MAJOR.MINOR.PATCH:
 - MINOR version when adding functionality in a backwards compatible manner,
 - PATCH version when making backwards compatible bug fixes.
 
+## [2.1.2] 2021-01-05
+
+### Added
+
+- clarify documentation regarding provider configuration requirements for OCI IAM resources (you must you home region)
+
 ## [2.1.1] 2020-12-22
 
 ### Added

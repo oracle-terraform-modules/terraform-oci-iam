@@ -92,7 +92,11 @@ module "iam" {
 }
 ```
 
-*Note: adjust the minor and patch version of the module according to your needs. If version is omitted, the latest available version on the registry will be used.*
+Note:
+
+- *adjust the minor and patch version of the module according to your needs. If version is omitted, the latest available version on the registry will be used.*
+- *When using the oci-iam modules, or more generally when manipulating iam resources, **be sure to configure your oci provider to use the tenancy's home region**, as IAM resources can only be managed from the home region.*
+- To combine this template with non-iam resources provisioned in a region different from your *home region*, you will need to use [provider aliases](https://www.terraform.io/docs/configuration/providers.html#alias-multiple-provider-configurations).
 
 The available submodules are listed below with example block codes. For fully-functional examples, please see [examples](./examples).
 
