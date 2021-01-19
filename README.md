@@ -98,11 +98,11 @@ Note:
 - *When using the oci-iam modules, or more generally when manipulating iam resources, **be sure to configure your oci provider to use the tenancy's home region**, as IAM resources can only be managed from the home region.*
 - To combine this template with non-iam resources provisioned in a region different from your *home region*, you will need to use [provider aliases](https://www.terraform.io/docs/configuration/providers.html#alias-multiple-provider-configurations).
 
-The available submodules are listed below with example block codes. For fully-functional examples, please see [examples](./examples).
+The available submodules are listed below with example block codes. For fully-functional examples, please see [examples](https://github.com/kral2/terraform-oci-iam/tree/master/examples).
 
 ### Declaring OCI Compartments with iam-compartment
 
-See a basic example below and [the iam-compartment readme](./modules/iam-compartment/README.md) for details.
+See a basic example below and [the iam-compartment readme](https://github.com/kral2/terraform-oci-iam/tree/master/modules/iam-compartment) for details.
 
 * To create a compartment at the root level of the tenancy, insert this block in your root configuration:
 
@@ -134,7 +134,7 @@ module "iam_subcompartment" {
 
 ### Declaring a list of OCI Users with iam-user
 
-See a basic example below and [the iam-user readme](./modules/iam-user/README.md) for details.
+See a basic example below and [the iam-user readme](https://github.com/kral2/terraform-oci-iam/tree/master/modules/iam-user) for details.
 
 * To create a list of users, insert this block in your root configuration:
 
@@ -165,7 +165,7 @@ module "iam_users" {
 
 ### Declaring OCI Groups with iam-group
 
-See a basic example below and [the iam-group readme](./modules/iam-group/README.md) for details.
+See a basic example below and [the iam-group readme](https://github.com/kral2/terraform-oci-iam/tree/master/modules/iam-group) for details.
 
 * To create a group, add previously declared users as members and create an IAM policy in the previously declared compartment, insert this block in your root configuration:
 
@@ -189,7 +189,7 @@ module "iam_group" {
 
 ### Declaring OCI Dynamic Groups with iam-dynamic-group
 
-See a basic example below and [the iam-dynamic-group readme](./modules/iam-dynamic-group/README.md) for details.
+See a basic example below and [the iam-dynamic-group readme](https://github.com/kral2/terraform-oci-iam/tree/master/modules/iam-dynamic-groupd) for details.
 
 * To create a dynamic group with a matching rule, and create an IAM policy in the previously declared compartment, insert this block in your root configuration:
 

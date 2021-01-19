@@ -11,6 +11,12 @@ Given a version number MAJOR.MINOR.PATCH:
 - MINOR version when adding functionality in a backwards compatible manner,
 - PATCH version when making backwards compatible bug fixes.
 
+## [2.1.3] 2021-01-19
+
+### Fixed
+
+- update documentation links to use absolute paths (Terraform Registry do not support relative paths)
+
 ## [2.1.2] 2021-01-05
 
 ### Added
