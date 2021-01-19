@@ -6,8 +6,8 @@ Note: the root folder of this module contains no Terraform code: it groups toget
 
 The file and directory layout follows the [Terraform Standard Module Structure](https://www.terraform.io/docs/modules/structure.html):
 
-* [modules](./modules) folder contains several standalone, reusable, submodules for creating IAM resources in Oracle Cloud Infrastructure,
-* [examples](./examples) folder contains fully-functional examples that you can copy and paste "as is" to have a first look at the submodules capabilities.
+* [modules](https://github.com/kral2/terraform-oci-iam/tree/master/modules) folder contains several standalone, reusable, submodules for creating IAM resources in Oracle Cloud Infrastructure,
+* [examples](https://github.com/kral2/terraform-oci-iam/tree/master/examples) folder contains fully-functional examples that you can copy and paste "as is" to have a first look at the submodules capabilities.
 
 ## Maintainers
 
@@ -53,7 +53,7 @@ The first OCI Terraform provider version to work with Terraform v0.12 is provide
 
 The diagram below summarizes the required components and their respective versions to use this module.
 
-![versions](docs/diagrams/versions.svg??raw=true&sanitize=true)
+![versions](https://github.com/kral2/terraform-oci-iam/blob/master/docs/diagrams/versions.svg??raw=true&sanitize=true)
 
 To enforce versions compatibility of both Terraform and the OCI provider, your root configuration should ideally include this block in main.tf for version pinning:
 
