@@ -16,6 +16,7 @@ Given a version number MAJOR.MINOR.PATCH:
 ### Fixed
 
 - update documentation links to use absolute paths (Terraform Registry do not support relative paths)
+- update image link
 
 ## [2.1.2] 2021-01-05
 
