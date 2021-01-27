@@ -1,4 +1,4 @@
-// Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2018, 2021, Oracle and/or its affiliates.
 
 terraform {
   required_version = ">= 0.12" // terraform version below 0.12 is not tested/supported with this module

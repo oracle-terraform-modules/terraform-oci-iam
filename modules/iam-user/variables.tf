@@ -1,4 +1,4 @@
-// Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2018, 2021, Oracle and/or its affiliates.
 
 variable "tenancy_ocid" {
   type = string
@@ -14,11 +14,4 @@ variable users {
     email = string
   }))
   default = null
-  # default = [
-  #   {
-  #     name        = null
-  #     description = null
-  #     email       = null
-  #   }
-  # ]
 }

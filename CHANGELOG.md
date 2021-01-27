@@ -11,6 +11,12 @@ Given a version number MAJOR.MINOR.PATCH:
 - MINOR version when adding functionality in a backwards compatible manner,
 - PATCH version when making backwards compatible bug fixes.
 
+## [Unreleased]
+
+### Changed
+
+- bump Copyright notice to 2021
+
 ## [2.1.3] 2021-01-19
 
 ### Fixed

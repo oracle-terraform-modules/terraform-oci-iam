@@ -1,4 +1,4 @@
-// Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2018, 2021, Oracle and/or its affiliates.
 
 output "compartment_id" {
   // This allows the compartment ID to be retrieved from the resource if it exists, and if not to use the data source.
