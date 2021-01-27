@@ -1,25 +1,49 @@
-# Oracle Cloud Infrastructure User Terraform Module
+# modules/iam-user
 
-This [Terraform module](https://www.terraform.io/docs/modules/index.html) allows an [Oracle Cloud Infrastructure  user](https://docs.cloud.oracle.com/iaas/Content/Identity/Tasks/managingusers.htm) to be used in either read-only mode or read/write mode. You can switch between the two modes by setting `user_create` to either true (read/write) or false (read-only).
+This [Terraform module](https://www.terraform.io/docs/modules/index.html) creates a list of [Oracle Cloud Infrastructure  IAM users](https://docs.cloud.oracle.com/iaas/Content/Identity/Tasks/managingusers.htm). Fedetated users are currently not supported by this module.
+
+In its current version, the module is limited to create each user with a description (required) and an e-mail (optional). Future versions of the module may support more parameters (API Keys, Tokens, Secret Keys, etc... ).
+
+Below is the typical module block you should add to your configuration to create a list of users with this module.
 
 ```hcl
-module "iam_user1" {
-  source           = "oracle-terraform-modules/iam/oci//modules/iam-user"
-  tenancy_ocid     = "${var.tenancy_ocid}"
-  user_name        = "tf_example_user1@oracle.com"
-  user_description = "user1 created by terraform"
+module "iam_users" {
+  source          = "oracle-terraform-modules/iam/oci//modules/iam-user"
+  version         = "2.1.1"
+  tenancy_ocid    = var.tenancy_ocid # required
+  users           = [ # a list of users
+    { # user1
+      name        = "tf_example_user1@example.com" # required
+      description = "user1 - terraformed" # required
+      email       = null # set to null if you don't want to provide an email 
+    },
+    { # user2
+      name        = "tf_example_user2@example.com"
+      description = "user2 - terraformed"
+      email       = "tf_example_user2@example.com"
+    },
+    { # user3
+      name        = "tf_example_user3@example.com"
+      description = "user3 - terraformed"
+      email       = "tf_example_user3@example.com"
+    },# add more users below as needed
+  ]
 }
 ```
 
-Note the following parameters:
+Check out the [examples](https://github.com/kral2/terraform-oci-iam/tree/master/examples) folder for fully-working sample code.
 
-Argument | Description
---- | ---
-tenancy_ocid | (Required) Unique identifier (OCID) of the tenancy.
-user_name | The name you assign to the user during creation. The name must be unique across all compartments in the tenancy.
-user_description | (Required if user_create is true.) Description of the user. The description is editable.
-user_create | (Optional) Specifies whether the module should create a user. If true, the user must have permissions to create a user. If false, user data will be returned about existing users. If no users are found, an empty string is returned for the user ID. Default value is true.
+Note the following parameters for the module:
 
-You can find the other parameters in [variables.tf](https://github.com/oracle-terraform-modules/terraform-oci-iam/blob/master/modules/iam-user/variables.tf).
+Argument | Description | Default
+--- | --- | ---
+tenancy_ocid | (Required) Unique identifier (OCID) of the tenancy. Users may only be created at the root of the tenancy. | null
+users | (Required) A list of users to create | null
 
-Check out the [example](https://github.com/oracle-terraform-modules/terraform-oci-iam/tree/master/example) for fully-working sample code.
+Each User element is a map with up to three keys:
+
+Argument | Description | Default
+--- | --- | ---
+name | (Required) The name you assign to the user during creation. The name must be unique across all users in the tenancy and cannot be changed. | null
+description | (Required)(Updatable) Description you assign to the user during creation. Does not have to be unique, and it's changeable. | null
+email | (Required)(Updatable) The email address you assign to the user during creation. Has to be unique across the tenancy. Set it to null if you don't want to provide an email. | null

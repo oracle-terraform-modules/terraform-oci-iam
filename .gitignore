@@ -2,4 +2,9 @@ terraform.tfvars
 .terraform
 *.tfstate
 *.tfstate.backup
+*.lock
+
+tests
+
 .DS_Store
+.vscode

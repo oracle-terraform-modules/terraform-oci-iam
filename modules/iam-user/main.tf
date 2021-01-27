@@ -1,25 +1,22 @@
-// Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2018, 2021, Oracle and/or its affiliates.
+
+terraform {
+  required_version = ">= 0.12" // terraform version below 0.12 is not tested/supported with this module
+  required_providers {
+    oci = {
+      version = ">= 3.27" // force downloading oci-provider compatible with terraform v0.12
+    }
+  }
+}
 
 ########################
 # User
 ########################
 resource "oci_identity_user" "this" {
-  count          = "${var.user_create ? 1 : 0}"
-  compartment_id = "${var.tenancy_ocid}"
-  name           = "${var.user_name}"
-  description    = "${var.user_description}"
+  count          = length(var.users)
+  compartment_id = var.tenancy_ocid
+  name           = var.users[count.index].name
+  description    = var.users[count.index].description
+  email          = var.users[count.index].email == null ? "" : var.users[count.index].email
 }
 
-data "oci_identity_users" "this" {
-  count          = "${var.user_create ? 0 : 1}"
-  compartment_id = "${var.tenancy_ocid}"
-
-  filter {
-    name   = "name"
-    values = ["${var.user_name}"]
-  }
-}
-
-locals {
-  user_ids = "${concat(flatten(data.oci_identity_users.this.*.users), list(map("id", "")))}"
-}

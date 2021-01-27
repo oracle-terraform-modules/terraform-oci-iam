@@ -1,6 +1,8 @@
-# Oracle Cloud Infrastructure Dynamic Group Terraform Module
+# modules/iam-dynamic-group
 
-This [Terraform module](https://www.terraform.io/docs/modules/index.html) defines an [Oracle Cloud Infrastructure Dynamic Group](https://docs.cloud.oracle.com/iaas/Content/Identity/Tasks/managingdynamicgroups.htm) and a related policy.
+This [Terraform module](https://www.terraform.io/docs/modules/index.html) defines an [Oracle Cloud Infrastructure Dynamic Group](https://docs.cloud.oracle.com/iaas/Content/Identity/Tasks/managingdynamicgroups.htm). Optionally, you can:
+
+* add an OCI IAM policy for this dynamic group. [See How Policies Work](https://docs.cloud.oracle.com/iaas/Content/Identity/Concepts/policies.htm) and [Common Policies](https://docs.cloud.oracle.com/iaas/Content/Identity/Concepts/commonpolicies.htm) for more information regarding the policy syntax.
 
 ```hcl
 module "iam_dynamic_group" {
@@ -8,7 +10,7 @@ module "iam_dynamic_group" {
   tenancy_ocid              = "${var.tenancy_ocid}"
   dynamic_group_name        = "tf_example_dynamic_group"
   dynamic_group_description = "dynamic group created by terraform"
-  dynamic_group_rule        = "instance.compartment.id = '${module.iam_compartment.compartment_id}'"
+  matching_rule             = "instance.compartment.id = '${module.iam_compartment.compartment_id}'"
   policy_compartment_id     = "${module.iam_compartment.compartment_id}"
   policy_name               = "tf-example-dynamic-policy"
   policy_description        = "dynamic policy created by terraform"
@@ -16,19 +18,17 @@ module "iam_dynamic_group" {
 }
 ```
 
+Check out the [examples](https://github.com/kral2/terraform-oci-iam/tree/master/examples) for fully-working sample code.
+
 Note the following parameters:
 
-Argument | Description
---- | ---
-tenancy_ocid | (Required) Unique identifier (OCID) of the tenancy.
-dynamic_group_name | (Required) Name given to the dynamic group during creation. The name must be unique across all compartments in the tenancy.
-dynamic_group_description | (Required if dynamic_group_create is true.) Description of the dynamic group. The description is editable.
-dynamic_group_create | (Optional) Specifies whether the module should create a dynamic group. If true, the user must have permission to create a dynamic group. If false, data is returned for any existing dynamic groups, and an empty string is returned for the dynamic group ID. Default value is true.
-dynamic_group_rule | (Required if dynamic_group_create is true.) Define a matching rule or a set of matching rules to define the group members.
-policy_name | (Optional)  The name you assign to the IAM policy. 
-policy_description | (Required if policy_name is not empty) Description of the IAM policy. The description is editable. 
-policy_statements | (Required if policy_name is not empty)  The policy definition expressed as one or more policy statements. 
-
-You can find the other parameters in [variables.tf](https://github.com/oracle-terraform-modules/terraform-oci-iam/blob/master/modules/iam-dynamic-group/variables.tf).
-
-Check out the [example](https://github.com/oracle-terraform-modules/terraform-oci-iam/tree/master/example) for fully-working sample code.
+Argument | Description | Default
+--- | --- | ---
+tenancy_ocid | (Required) Unique identifier (OCID) of the tenancy. | null
+dynamic_group_name | (Required) Name given to the dynamic group during creation. The name must be unique across all compartments in the tenancy and cannot be changed. | null
+dynamic_group_description | (Required if dynamic_group_create is true.)(Updatable) Description of the dynamic group. Does not have to be unique, and it's changeable. | null
+dynamic_group_create | **[DEPRECATED]** (Optional) Specifies whether the module should create a dynamic group. If true, the user must have permission to create a dynamic group. If false, data is returned for any existing dynamic groups, and an empty string is returned for the dynamic group ID. | true
+matching_rule | (Required if dynamic_group_create is true.)(Updatable) The matching rule to dynamically match an instance certificate to this dynamic group. For rule syntax, see [Managing Dynamic Groups](https://docs.cloud.oracle.com/iaas/Content/Identity/Tasks/managingdynamicgroups.htm). | null
+policy_name | (Optional)  The name you assign to the IAM policy. The name you assign to the IAM policy. The name must be unique across all policies in the tenancy and cannot be changed. | null
+policy_description | (Required if policy_name is set)(Updatable) The description you assign to the policy during creation. Does not have to be unique, and it's changeable. | null
+policy_statements | (Required if policy_name is set)(Updatable) An array of policy statements written in the policy language. | null

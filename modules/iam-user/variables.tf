@@ -1,20 +1,17 @@
-// Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2018, 2021, Oracle and/or its affiliates.
 
 variable "tenancy_ocid" {
-  description = "The OCID of the tenancy. "
+  type = string
+  description = "The OCID of the tenancy."
+  default = null
 }
 
-variable "user_name" {
-  description = "The name you assign to the user during creation. The name must be unique across all compartments in the tenancy. "
-}
-
-// The description is only used if user_create = true.
-variable "user_description" {
-  description = "The description you assign to the user. Does not have to be unique, and it's changeable. "
-  default     = ""
-}
-
-variable "user_create" {
-  description = "Create the user or not. If true, the user must have permissions to create the user; If false, user data will be returned about the user if it exists, if not found, then an empty string will be returned for the user ID."
-  default     = true
+variable users {
+  description = "The name and description you assign to the user during creation. The name must be unique across all compartments in the tenancy. "
+  type = list(object({
+    name = string
+    description = string
+    email = string
+  }))
+  default = null
 }
