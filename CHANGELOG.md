@@ -11,6 +11,19 @@ Given a version number MAJOR.MINOR.PATCH:
 - MINOR version when adding functionality in a backwards compatible manner,
 - PATCH version when making backwards compatible bug fixes.
 
+## [2.0.1] - 2021-02-09
+
+### Fixed
+
+- missing description for outputs
+- Remove uncorrect module version from examples (Issue #18)
+- typo in examples/main.tf for iam_dynamic_group module source path (Issue #19)
+- explanation of `enable_delete` argument behaviour in modules/iam-compartment documentation (Issue #20)
+
+### Changed
+
+- no more version pinning in examples to keep documentation current, but add a note on how to do it for production code.
+
 ## [2.0.0] - 2021-01-27
 
 ### Added

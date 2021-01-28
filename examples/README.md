@@ -25,13 +25,13 @@ All resources created by this example can be deleted by using the `terraform des
 > terraform init
 ```
 
-- Inspect what Terraform plans to do before actually doing it:
+- Inspect what Terraform plans to do for the next `apply`:
 
 ```bash
 > terraform plan
 ```
 
-- If proposed changes are what waas intended, apply the plan to Provision resources on OCI (if not abort the operation and review the configuration):
+- If proposed changes are what is intended, apply the current plan to Provision resources on OCI (if not, abort the operation and review the configuration):
 
 ```bash
 > terraform apply

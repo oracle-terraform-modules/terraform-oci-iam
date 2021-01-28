@@ -4,14 +4,18 @@ This [Terraform module](https://www.terraform.io/docs/modules/index.html) allows
 
 With the `enable_delete` argument (boolean: `true` or `false`), you can control the `terraform destroy` command behavior:
 
-- `true`: terraform will only remove the compartment from the configuration (the actual OCI resource is not deleted, only the terraform representation is deleted
-- `false`: terraform will actually delete the compartment from OCI.
+- `true`: terraform will actually delete the compartment from OCI.
+- `false`: terraform will only remove the compartment from the configuration (the actual OCI resource is not deleted, only the terraform representation is deleted
 
 Below is the typical module block you should add to your configuration to create a compartment with this module.
+
+**IMPORTANT:** There is no version pinning of modules in the examples to lower documentation maintenance when releasing new module versions. It is a good practice to pin the module version to the exact version you are using in your code so that your infrastructure remains stable and predictible.
 
 ```hcl
 module "iam_compartment" {
   source                  = "oracle-terraform-modules/iam/oci//modules/iam-compartment"
+  # Pinning each module to a specific version is highly advisable. Please adjust and uncomment the line below
+  # version               = "x.x.x"
   tenancy_ocid            = var.tenancy_ocid
   compartment_id          = var.tenancy_ocid
   compartment_name        = "tf_example_compartment"
@@ -29,6 +33,8 @@ The argument `compartment_id` defines the parent compartment of the defined comp
 ```hcl
 module "iam_subcompartment" {
   source                  = "oracle-terraform-modules/iam/oci//modules/iam-compartment"
+  # Pinning each module to a specific version is highly advisable. Please adjust and uncomment the line below
+  # version               = "x.x.x"
   tenancy_ocid            = var.tenancy_ocid
   compartment_id          = module.iam_compartment.compartment_id
   compartment_name        = "tf_example_subcompartment"
