@@ -18,7 +18,7 @@ module "iam_dynamic_group" {
 }
 ```
 
-Check out the [examples](https://github.com/kral2/terraform-oci-iam/tree/master/examples) for fully-working sample code.
+Check out the [examples](https://github.com/oracle-terraform-modules/terraform-oci-iam/tree/master/examples) for fully-working sample code.
 
 Note the following parameters:
 

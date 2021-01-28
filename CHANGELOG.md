@@ -11,92 +11,50 @@ Given a version number MAJOR.MINOR.PATCH:
 - MINOR version when adding functionality in a backwards compatible manner,
 - PATCH version when making backwards compatible bug fixes.
 
-## [Unreleased]
-
-### Changed
-
-- bump Copyright notice to 2021
-
-## [2.1.3] 2021-01-19
-
-### Fixed
-
-- update documentation links to use absolute paths (Terraform Registry do not support relative paths)
-- update image link
-
-## [2.1.2] 2021-01-05
+## [2.0.0] - 2021-01-27
 
 ### Added
 
-- clarify documentation regarding provider configuration requirements for OCI IAM resources (you must you home region)
+#### New features
 
-## [2.1.1] 2020-12-22
+- delete a compartment
+- create a sub-compartment
+- create a list of oci users
+- set email of oci user
 
-### Added
+#### Documentation
 
-- variables: type constraints defined for all variables,
-- variables: default value is `null` if there is no other advisable value,
-- ouputs: user_description output for iam-user module,
-- terraform and OCI terraform provider version pinning block,
-- examples: add a README
+- CHANGELOG following [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) format
+- CONTRIBUTING guide
+- prerequisites section with the required Terraform and Terraform Provider versions
+- clarify provider configuration requirements for OCI IAM resources (you must your home region)
+- README for /examples
+- examples on how to use the new features of this module
 
 ### Changed
 
-Documentation update:
-
-- update README files to use relative links for content coming from this repo
-- Update oci provider URL to registry.terraform.io
-- update the prerequisites and usage section for each submodule
-- add a column with default value for each variable
-
-Resources:
+#### Resources
 
 - `count` tests with true/false for boolean variables,
 - `count` tests with null or variable length for arrays.
 
-### Fixed
+#### modules/*
 
-- iam-user: email can be empty if value is set to `null`
+- terraform and OCI terraform provider version pinning block : Terraform 0.12 and OCI Provider 3.27 or greater
+- new outputs for each sub-modules
+- typed variables
+- variables default value is `null` if there is no better advisable value
 
-## [2.1.0] 2020-12-15
-
-### Added
-
-- More current README.md for the example folder. Also add a sample apply output.
-
-#### Module - iam-compartment, iam-group, iam-dynamic-group
-
-- More complete outputs. oci-compartment now also expose the parent compartment ocid,
-- add a new combined output name -> ocid
-
-### Changed
-
-#### Module - iam-compartment
+#### modules/iam-compartment
 
 - compartment_name and compartment_description are now mandatory (default value is null),
 - compartment_id is now optional: if the parent compartment ID is not specified, the compartment is created at the root level of the tenancy
 
-#### Module - iam-user
+#### modules/iam-user
 
 - name and description are now mandatory (default value is null)
 
 ### Fixed
 
-- update modules and examples to not use deprecated interpolation syntax anymore,
-- update examples to show how to use the 2.x.x features of this module.
-
-## [2.0.1] 2020-12-14
-
-### Added
-
-- repo maintenance: starts this CHANGELOG.md
-- update README.md prerequisites section with the required Terraform and Terraform Provider versions
-
-### Changed
-
-- repo maintenance: updates Copyright to 2020
-- repo maintenance: .gitignore and .gitattributes adjusted files for cleaner repo
-
-### Removed
-
-- Resource "watermark" with freeform tags - may be reintroduced later in a more flexible manner
+- Issues: #11 #12 #16
+- no more deprecated interpolation syntax in modules and examples
