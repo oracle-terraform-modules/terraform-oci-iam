@@ -39,9 +39,9 @@ provider "oci" {
  */
 
 module "iam_compartment" {
-
   source                  = "oracle-terraform-modules/iam/oci//modules/iam-compartment"
-  version                 = "2.1.1"
+  # Pinning each module to a specific version is highly advisable. Please adjust and uncomment the line below
+  # version               = "x.x.x"
   tenancy_ocid            = var.tenancy_ocid
   compartment_id          = var.tenancy_ocid # define the parent compartment. Creation at tenancy root if omitted
   compartment_name        = "tf_example_compartment"
@@ -52,7 +52,8 @@ module "iam_compartment" {
 
 module "iam_subcompartment1" {
   source                  = "oracle-terraform-modules/iam/oci//modules/iam-compartment"
-  version                 = "2.1.1"
+  # Pinning each module to a specific version is highly advisable. Please adjust and uncomment the line below
+  # version               = "x.x.x"
   tenancy_ocid            = var.tenancy_ocid
   compartment_id          = module.iam_compartment.compartment_id # define the parent compartment. Here we make reference to the previous module
   compartment_name        = "tf_example_subcompartment1"
@@ -63,7 +64,8 @@ module "iam_subcompartment1" {
 
 module "iam_subcompartment2" {
   source                  = "oracle-terraform-modules/iam/oci//modules/iam-compartment"
-  version                 = "2.1.1"
+  # Pinning each module to a specific version is highly advisable. Please adjust and uncomment the line below
+  # version               = "x.x.x"
   tenancy_ocid            = var.tenancy_ocid
   compartment_id          = module.iam_compartment.compartment_id # define the parent compartment. Here we make reference to the previous module
   compartment_name        = "tf_example_subcompartment2"
@@ -74,7 +76,8 @@ module "iam_subcompartment2" {
 
 module "iam_users" {
   source       = "oracle-terraform-modules/iam/oci//modules/iam-user"
-  version      = "2.1.1"
+  # Pinning each module to a specific version is highly advisable. Please adjust and uncomment the line below
+  # version       = "x.x.x"
   tenancy_ocid = var.tenancy_ocid
   users = [
     { # user1
@@ -97,7 +100,7 @@ module "iam_users" {
 
 module "iam_group" {
   source                = "oracle-terraform-modules/iam/oci//modules/iam-group"
-  version               = "2.1.1"
+  version               = "2.0.0"
   tenancy_ocid          = var.tenancy_ocid
   group_name            = "tf_example_group"
   group_description     = "an example group - terraformed"
@@ -112,8 +115,9 @@ module "iam_group" {
 }
 
 module "iam_dynamic_group" {
-  source                    = "oracle-terraform-modules/iam/oci//modules/iam-group"
-  version                   = "2.1.1"
+  source                    = "oracle-terraform-modules/iam/oci//modules/iam-dyanmic-group"
+  # Pinning each module to a specific version is highly advisable. Please adjust and uncomment the line below
+  # version               = "x.x.x"
   tenancy_ocid              = var.tenancy_ocid
   dynamic_group_name        = "tf_example_dynamic_group"
   dynamic_group_description = "dynamic group created by terraform"

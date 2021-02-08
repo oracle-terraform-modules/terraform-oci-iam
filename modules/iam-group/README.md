@@ -5,12 +5,15 @@ This [Terraform module](https://www.terraform.io/docs/modules/index.html) define
 * add a list of users as member to the created group,
 * add an OCI IAM policy. [See How Policies Work](https://docs.cloud.oracle.com/iaas/Content/Identity/Concepts/policies.htm) and [Common Policies](https://docs.cloud.oracle.com/iaas/Content/Identity/Concepts/commonpolicies.htm) for more information regarding the policy syntax.
 
-Below is the typical module block you should add to your configuration to create a group with this module.
+Below is the typical module block you should add to your configuration to create a compartment with this module.
+
+**IMPORTANT:** There is no version pinning of modules in the examples to lower documentation maintenance when releasing new module versions. It is a good practice to pin the module version to the exact version you are using in your code so that your infrastructure remains stable and predictible.
 
 ```hcl
 module "iam_group" {
   source                = "oracle-terraform-modules/iam/oci//modules/iam-group"
-  version         = "2.1.1"
+  # Pinning each module to a specific version is highly advisable. Please adjust and uncomment the line below
+  # version               = "x.x.x"
   tenancy_ocid          = var.tenancy_ocid # required
   group_name            = "tf_example_group"  # required
   group_description     = "an example group - terraformed"  # required

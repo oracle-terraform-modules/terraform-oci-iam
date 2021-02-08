@@ -4,12 +4,15 @@ This [Terraform module](https://www.terraform.io/docs/modules/index.html) create
 
 In its current version, the module is limited to create each user with a description (required) and an e-mail (optional). Future versions of the module may support more parameters (API Keys, Tokens, Secret Keys, etc... ).
 
-Below is the typical module block you should add to your configuration to create a list of users with this module.
+Below is the typical module block you should add to your configuration to create a compartment with this module.
+
+**IMPORTANT:** There is no version pinning of modules in the examples to lower documentation maintenance when releasing new module versions. It is a good practice to pin the module version to the exact version you are using in your code so that your infrastructure remains stable and predictible.
 
 ```hcl
 module "iam_users" {
   source          = "oracle-terraform-modules/iam/oci//modules/iam-user"
-  version         = "2.1.1"
+  # Pinning each module to a specific version is highly advisable. Please adjust and uncomment the line below
+  # version               = "x.x.x"
   tenancy_ocid    = var.tenancy_ocid # required
   users           = [ # a list of users
     { # user1
