@@ -54,3 +54,16 @@ variable "policy_compartment_id" {
   description = "The compartment id where policy is created."
   default     = null
 }
+
+variable "idp_group_name" {
+  type        = string
+  default     = null
+}
+
+
+variable "idp_provider_id" {
+  type        = string
+  default     = null
+
+}
+
