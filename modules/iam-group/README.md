@@ -43,3 +43,5 @@ policy_name | (Optional)  The name you assign to the IAM policy. The name must b
 policy_compartment | (Required, if policy_name is set) The OCID of the compartment containing the policy. Cannot be changed (current API limitation.) | null
 policy_description | (Required, if policy_name is set)(Updatable) The description you assign to the policy during creation. Does not have to be unique, and it's changeable. | null
 policy_statements | (Required if policy_name is set)(Updatable) An array of policy statements written in the policy language. | null
+idp_group_name | IDP group name what to map for SSO | null
+idp_provider_id | IDP Mapping provider ID, most likely GUID | null

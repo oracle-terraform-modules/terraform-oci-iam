@@ -53,3 +53,14 @@ resource "oci_identity_policy" "this" {
   compartment_id = var.policy_compartment_id
   statements     = var.policy_statements
 }
+
+########################
+# Add idp_mapping to a group
+########################
+
+resource "oci_identity_idp_group_mapping" "this" {
+  count                = var.idp_provider_id == null ? 0 : length(var.idp_provider_id)
+  group_id             = var.group_create ? element(concat(oci_identity_group.this.*.id, list("")), 0) : lookup(local.group_ids[0], "id")
+  identity_provider_id = var.idp_provider_id
+  idp_group_name       = var.idp_group_name
+}
