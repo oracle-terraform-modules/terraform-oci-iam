@@ -57,6 +57,7 @@ variable "policy_compartment_id" {
 
 variable "idp_group_name" {
   type        = string
+  description = "IDP group name what to map for SSO"
   default     = null
 }
 
@@ -64,6 +65,6 @@ variable "idp_group_name" {
 variable "idp_provider_id" {
   type        = string
   default     = null
-
+  description = "IDP Mapping provider ID, most likely GUID"
 }
 
