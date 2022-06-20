@@ -5,6 +5,7 @@ terraform {
   required_providers {
     oci = {
       version = ">= 3.27" // force downloading oci-provider compatible with terraform v0.12
+      source  = "oracle/oci"
     }
   }
 }
