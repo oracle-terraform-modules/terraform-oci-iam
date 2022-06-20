@@ -32,6 +32,6 @@ data "oci_identity_compartments" "this" {
 }
 
 locals {
-  compartment_ids        = concat(flatten(data.oci_identity_compartments.this.*.compartments), list(map("id", "")))
-  parent_compartment_ids = concat(flatten(data.oci_identity_compartments.this.*.compartments), list(map("compartment_id", "")))
+  compartment_ids        = concat(flatten(data.oci_identity_compartments.this.*.compartments), list({ "id" = ""}))
+  parent_compartment_ids = concat(flatten(data.oci_identity_compartments.this.*.compartments), list({"compartment_id" = ""}))
 }
