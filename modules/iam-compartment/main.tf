@@ -14,7 +14,7 @@ terraform {
 # Compartment
 ########################
 
-resource "oci_identity_compartment" "this" {
+resource "oci_identity_compartment" "identity_compartment" {
   count          = var.compartment_create ? 1 : 0
   compartment_id = var.compartment_id != null ? var.compartment_id : var.tenancy_ocid
   name           = var.compartment_name
@@ -22,7 +22,7 @@ resource "oci_identity_compartment" "this" {
   enable_delete  = var.enable_delete
 }
 
-data "oci_identity_compartments" "this" {
+data "oci_identity_compartments" "identity_compartment" {
   count          = var.compartment_create ? 0 : 1
   compartment_id = var.compartment_id
 
@@ -33,6 +33,6 @@ data "oci_identity_compartments" "this" {
 }
 
 locals {
-  compartment_ids        = concat(flatten(data.oci_identity_compartments.this.*.compartments), [{ "id" = ""}])
-  parent_compartment_ids = concat(flatten(data.oci_identity_compartments.this.*.compartments), [{"compartment_id" = ""}])
+  compartment_ids        = concat(flatten(data.oci_identity_compartments.identity_compartment.*.compartments), [{ "id" = ""}])
+  parent_compartment_ids = concat(flatten(data.oci_identity_compartments.identity_compartment.*.compartments), [{"compartment_id" = ""}])
 }
