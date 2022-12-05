@@ -21,7 +21,7 @@ data "oci_identity_groups" "this" {
 }
 
 locals {
-  group_ids = concat(flatten(data.oci_identity_groups.this.*.groups), list(map("id", "")))
+  group_ids = concat(flatten(data.oci_identity_groups.this.*.groups), [{ "id" = "" }])
 }
 
 ########################
@@ -30,7 +30,7 @@ locals {
 resource "oci_identity_user_group_membership" "this" {
   count    = var.user_ids == null ? 0 : length(var.user_ids)
   user_id  = var.user_ids[count.index]
-  group_id = var.group_create ? element(concat(oci_identity_group.this.*.id, list("")), 0) : lookup(local.group_ids[0], "id")
+  group_id = var.group_create ? element(concat(oci_identity_group.this.*.id, [""]), 0) : lookup(local.group_ids[0], "id")
 }
 
 ########################

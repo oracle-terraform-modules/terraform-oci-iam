@@ -22,7 +22,7 @@ data "oci_identity_dynamic_groups" "this" {
 }
 
 locals {
-  dynamic_group_ids = concat(flatten(data.oci_identity_dynamic_groups.this.*.dynamic_groups), list(map("id", "")))
+  dynamic_group_ids = concat(flatten(data.oci_identity_dynamic_groups.this.*.dynamic_groups), [{ id = "" }])
 }
 
 ########################
