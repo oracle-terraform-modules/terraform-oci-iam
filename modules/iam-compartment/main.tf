@@ -1,14 +1,5 @@
 // Copyright (c) 2018, 2021, Oracle and/or its affiliates.
 
-terraform {
-  required_version = ">= 0.12" // terraform version below 0.12 is not tested/supported with this module
-  required_providers {
-    oci = {
-      version = ">= 3.27" // force downloading oci-provider compatible with terraform v0.12
-    }
-  }
-}
-
 ########################
 # Compartment
 ########################
@@ -32,6 +23,6 @@ data "oci_identity_compartments" "this" {
 }
 
 locals {
-  compartment_ids        = concat(flatten(data.oci_identity_compartments.this.*.compartments), list(map("id", "")))
-  parent_compartment_ids = concat(flatten(data.oci_identity_compartments.this.*.compartments), list(map("compartment_id", "")))
+  compartment_ids        = concat(flatten(data.oci_identity_compartments.this.*.compartments), tolist([tomap({ "id" = "" })]))
+  parent_compartment_ids = concat(flatten(data.oci_identity_compartments.this.*.compartments), tolist([tomap({ "compartment_id" = "" })]))
 }
