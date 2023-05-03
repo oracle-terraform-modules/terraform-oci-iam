@@ -2,12 +2,12 @@
 
 output "group_id" {
   description = "Group ocid"
-  value = var.group_create ? element(concat(oci_identity_group.this.*.id, list("")), 0) : lookup(local.group_ids[0], "id")
+  value       = var.group_create ? element(concat(oci_identity_group.this.*.id, [""]), 0) : lookup(local.group_ids[0], "id")
 }
 
 output "group_name" {
   description = "Group name"
-  value = var.group_name
+  value       = var.group_name
 }
 
 output "name_ocid" {
@@ -17,10 +17,10 @@ output "name_ocid" {
 
 output "group_description" {
   description = "Group description"
-  value = var.group_description
+  value       = var.group_description
 }
 
 output "group_policy_name" {
   description = "Group policy name"
-  value = var.policy_name
+  value       = var.policy_name
 }
