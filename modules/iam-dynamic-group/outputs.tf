@@ -1,4 +1,4 @@
-// Copyright (c) 2018, 2021, Oracle and/or its affiliates.
+// Copyright (c) 2018, 2023 Oracle and/or its affiliates.
 
 output "dynamic_group_id" {
   description = "Dynamic Group ocid"
