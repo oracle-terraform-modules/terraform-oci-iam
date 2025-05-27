@@ -43,3 +43,8 @@ output "iam_dynamic_group_name" {
   description = "dynamic group name and associated ocid"
   value       = module.iam_dynamic_group.name_ocid
 }
+
+output "compartment_ids_under_root" {
+  description = "Compartment id list under root"
+  value       = module.Hierarchical_compartment.compartment_ids
+}

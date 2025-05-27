@@ -1,0 +1,42 @@
+compartments:
+- compartment_name: compartment_level_1_a
+  description: "level 1 a"
+  freeform_tags: 
+    "Env": "Dev" 
+    "Billing": "Devbilling"
+  enable_delete: true
+  compartments:
+  - compartment_name: compartment_level_2_a
+    description: "level 2 a"
+    enable_delete: true
+    compartments:
+    - compartment_name: compartment_level_3_1_a
+      description: "level 3.1 a"
+      enable_delete: true
+      compartments: []
+    - compartment_name: compartment_level_3_2_a
+      description: "level 3.2 a"
+      enable_delete: true
+      compartments:
+      - compartment_name: compartment_level_4_a
+        description: "level 4 a"   
+        enable_delete: true 
+        compartments:
+        - compartment_name: compartment_level_5_a
+          description: "level 5 a"
+          enable_delete: true
+          compartments:
+          - compartment_name: compartment_level_6_a
+            description: "level 6 a"
+            enable_delete: true    
+- compartment_name: compartment_level_1_b
+  description: "level 1 b"
+  enable_delete: true
+  compartments:
+  - compartment_name: compartment_level_2_b
+    compartments: []
+    description: "level 2b"
+    enable_delete: true
+    freeform_tags: 
+      "Env": "Test" 
+      "Billing": "Testbilling"
