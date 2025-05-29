@@ -1,4 +1,4 @@
-// Copyright (c) 2018, 2021, Oracle and/or its affiliates.
+// Copyright (c) 2018, 2021, 2025, Oracle and/or its affiliates.
 
 /*
 * This example shows how to create a hierarchical compartments.
@@ -9,6 +9,7 @@
 
 module "Hierarchical_compartment" {
   source              = "oracle-terraform-modules/iam/oci//modules/iam-hierarchical-compartment"
+  # version               = "2.0.2"
   root_compartment_id = var.tenancy_ocid # define the parent compartment. Creation at tenancy root if omitted
   compartments        = yamldecode(file("${path.module}/hierarchical_compartment_config.yaml"))["compartments"]
 }

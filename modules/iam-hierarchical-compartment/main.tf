@@ -1,4 +1,4 @@
-// Copyright (c) 2018, 2021, Oracle and/or its affiliates.
+// Copyright (c) 2018, 2021, 2025, Oracle and/or its affiliates.
 
 locals {
   compartment_level_1 = flatten(setsubtract([for entry1 in var.compartments : {

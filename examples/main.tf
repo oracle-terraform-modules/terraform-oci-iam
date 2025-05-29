@@ -39,7 +39,7 @@ provider "oci" {
  */
 
 module "iam_compartment" {
-  source = "oracle-terraform-modules/iam/oci//modules/iam-compartment"
+  source                  = "oracle-terraform-modules/iam/oci//modules/iam-compartment"
   # Pinning each module to a specific version is highly advisable. Please adjust and uncomment the line below
   # version               = "x.x.x"
   tenancy_ocid            = var.tenancy_ocid
