@@ -11,6 +11,14 @@ Given a version number MAJOR.MINOR.PATCH:
 - MINOR version when adding functionality in a backwards compatible manner,
 - PATCH version when making backwards compatible bug fixes.
 
+## [2.0.2] - 2025-05-27
+
+### Added
+
+#### New features
+
+- iam-hierarchical-compartment
+
 ## [2.0.1] - 2021-02-09
 
 ### Fixed

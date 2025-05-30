@@ -1,4 +1,5 @@
-// Copyright (c) 2018, 2021, Oracle and/or its affiliates.
+// Copyright (c) 2018, 2025, Oracle and/or its affiliates.
+// Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl
 
 variable "tenancy_ocid" {}
 variable "compartment_ocid" {}
@@ -51,7 +52,7 @@ module "iam_compartment" {
 }
 
 module "iam_subcompartment1" {
-  source                  = "oracle-terraform-modules/iam/oci//modules/iam-compartment"
+  source = "oracle-terraform-modules/iam/oci//modules/iam-compartment"
   # Pinning each module to a specific version is highly advisable. Please adjust and uncomment the line below
   # version               = "x.x.x"
   tenancy_ocid            = var.tenancy_ocid
@@ -63,7 +64,7 @@ module "iam_subcompartment1" {
 }
 
 module "iam_subcompartment2" {
-  source                  = "oracle-terraform-modules/iam/oci//modules/iam-compartment"
+  source = "oracle-terraform-modules/iam/oci//modules/iam-compartment"
   # Pinning each module to a specific version is highly advisable. Please adjust and uncomment the line below
   # version               = "x.x.x"
   tenancy_ocid            = var.tenancy_ocid
@@ -75,7 +76,7 @@ module "iam_subcompartment2" {
 }
 
 module "iam_users" {
-  source       = "oracle-terraform-modules/iam/oci//modules/iam-user"
+  source = "oracle-terraform-modules/iam/oci//modules/iam-user"
   # Pinning each module to a specific version is highly advisable. Please adjust and uncomment the line below
   # version       = "x.x.x"
   tenancy_ocid = var.tenancy_ocid
@@ -115,7 +116,7 @@ module "iam_group" {
 }
 
 module "iam_dynamic_group" {
-  source                    = "oracle-terraform-modules/iam/oci//modules/iam-dyanmic-group"
+  source = "oracle-terraform-modules/iam/oci//modules/iam-dyanmic-group"
   # Pinning each module to a specific version is highly advisable. Please adjust and uncomment the line below
   # version               = "x.x.x"
   tenancy_ocid              = var.tenancy_ocid

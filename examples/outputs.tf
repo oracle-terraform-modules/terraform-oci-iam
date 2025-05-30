@@ -1,4 +1,5 @@
-// Copyright (c) 2018, 2021, Oracle and/or its affiliates.
+// Copyright (c) 2018, 2025, Oracle and/or its affiliates.
+// Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl
 
 output "iam_compartment" {
   description = "compartment name, description, ocid, and parent ocid"
@@ -42,4 +43,9 @@ output "iam_group" {
 output "iam_dynamic_group_name" {
   description = "dynamic group name and associated ocid"
   value       = module.iam_dynamic_group.name_ocid
+}
+
+output "compartment_ids_under_root" {
+  description = "Compartment id list under root"
+  value       = module.Hierarchical_compartment.compartment_ids
 }
